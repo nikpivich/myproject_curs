@@ -1,0 +1,38 @@
+{% extends 'front/base.html' %}
+
+{% block title %} Create request {% endblock %}
+
+{% block content %}
+    {% if form.errors %}
+    {% for k, v in form.errors.items %}
+    <div class="alert alert-danger" role="alert">{{ k }}: {{ v }}</div>
+    {% endfor %}
+    {% endif %}
+
+    {% block delete %}
+
+    {% endblock %}
+
+    <form class="form-text" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="title">Вид сделки</label>
+            <input type="text" name="title" class="form-control" placeholder="Покупка/продажа" value="{{ title }}">
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="content">Компания</label>
+            <textarea name="companies" class="form-control" placeholder="Компания">{{ companies }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="content">Коментарии</label>
+            <textarea name="comments" class="form-control" placeholder="Модель/цвет">{{ comments }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="content">Стоимость</label>
+            <textarea name="money" class="form-control" placeholder="1.254">{{ money }}</textarea>
+        </div>
+
+        <input class="btn-primary btn" type="submit" value="ОК">
+    </form>
+{% endblock %}

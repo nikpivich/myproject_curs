@@ -1,0 +1,27 @@
+{% extends 'front/base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+    <br>
+    <div class="card">
+        <div class="card-header">
+            {{ post.title }}
+        </div>
+        <div class="card-body">
+            <label for="user" class="form-label">Компания</label>
+            <h5 class="card-title" >{{ post.companies }}</h5>
+            <br>
+            <label for="user" class="form-label">Коментарии</label>
+            <p class="card-text">{{ post.comments }}</p>
+            <br>
+            <label for="user" class="form-label">Цена</label>
+            <p class="card-text">{{ post.money }}</p>
+        </div>
+    </div>
+    <span>{{ post.date }}</span> <a href="{% url 'profile' user %}"><span class="badge text-bg-secondary">{{ user }}</span></a>
+    <hr>
+    <div class="container">
+        <span class="">{{ post.content | safe }}</span>
+    </div>
+{% endblock %}

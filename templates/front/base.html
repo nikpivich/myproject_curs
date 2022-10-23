@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://bootstrap-4.ru/docs/5.2/assets/css/docs.css" rel="stylesheet">
+    <title>Биржа</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body class="p-3 m-0 border-0 bd-example">
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}">Торги</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Биржа
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                            {% if user.is_authenticated %}
+                            <li><a class="dropdown-item" href="{% url 'converter' %}">Конвертер</a></li>
+                            <li><a class="dropdown-item" href="{% url 'show_posts' %}">Биржа</a></li>
+                            <li><a class="dropdown-item" href="{% url 'create' %}">Сделать заявку</a></li>
+                            <li><a class="dropdown-item" href="{% url 'profile_create' %}">Сщздать профиль</a></li>
+                            {% else %}
+                            <li><a class="dropdown-item" href="{% url 'login' %}">Войти</a></li>
+                            <li><a class="dropdown-item" href="{% url 'converter' %}">Регистрация</a></li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+  </div>
+  <div>
+    {% block content %}
+    {% endblock %}
+  </div>
+  </body>
+</html>
